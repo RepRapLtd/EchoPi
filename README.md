@@ -22,7 +22,7 @@ You will have to hack the charger attaching wires to the three mains connections
 
 ## Mechanics
 
-![FreeCAD design](blob/master/Pictures/case-cad.png?raw=true)
+![FreeCAD design](https://raw.githubusercontent.com/RepRapLtd/EchoPi/master/Pictures/case-cad.png)
 
 The FreeCAD (http://www.freecadweb.org/) case is designed to be 3D printed.  
 
