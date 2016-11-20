@@ -20,7 +20,7 @@ The Eagle (https://cadsoft.io/) circuit design is single sided with a few jumper
 
 The FreeCAD (http://www.freecadweb.org/) case is designed to be 3D printed.  It incorporates a mains USB charger.  This both acts as the plug so the device can be plugged into a wall socket, and as a 5V supply for the Raspberry Pi Zero and the rest of the electronics.
 
-You will have to hack the charger attaching wires to the three mains connections.  The Neutral and Earth run straight through the device to the mains output, and the live wire goes through the fuse and then the opto-isolated phototriac, which switches it on and off. 
+You will have to hack the charger attaching wires to the three mains connections inside and drilling holes to lead them out of.  The neutral and earth run straight through the device to the mains output, and the live wire goes through the fuse and then the opto-isolated phototriac, which switches it on and off. 
 
 ## Software Quick Start
 
@@ -32,11 +32,24 @@ You will have to hack the charger attaching wires to the three mains connections
 6. Tell Echo, "discover my devices"
 7. Use Echo's "turn off lights" and "lights on" to switch the mains socket on and off
 
-The line in the Python lights.py program that sets the name of the device is this one:
+The line in the Python lights.py program that sets the Alexa name of the device is this one:
 
      TRIGGERS = {"lights": 52000}
 
 Change the "lights" to any name you like, but it's best to choose easily-pronouncable dictionary words or well-known propper nouns.  That way the Alexa speech recognition will be most reliable.
+
+This is intended to connect to your home network using WiFi, but (particularly with BT HomeHubs) getting your Echo/Echo-Dot to find the device can be tricky.  
+
+Start by turning off all the annoying "features" of the BT hub: disable Smart Setup; don't synchronise 5 GHz WiFi with 2.4 GHz (keep the passwords the same, though, or you'll never remember, and ignore the password warning it gives you when you do this); turn off Extended UPnP security.
+
+Then use a micro-USB-to-ether adapter to connect the Pi Zero by wire to your hub.  Find the IP address that the hub has allocated your device (hub advanced settings; DHCP table).  Log into the Pi using ssh and set it to use that IP address for both wired and WiFi connections (https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update).
+
+Run the Python program and tell Alexa to discover your devices.  She should find it.  Test that it works by turning the load on and off.
+
+Then shut everything down and disconnect it.  Fit a USB-WiFi adapter in place of the ethernet and power everything up again.  You should be able to ssh into the Pi as before.
+
+Ask Echo/Alexa to turn your device on.  If she sees it, great.  But if not, press and hold the Echo button to put it into setup mode and leave it for a minute or so, then press and hold it again to turn setup off.  It should reconnect to your hub and then be able to turn your device on and off.
+
 
 ## Useful Links
 
