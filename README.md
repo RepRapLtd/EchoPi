@@ -18,9 +18,9 @@ Realistically, you will probably want to operate this with the cover off when yo
 
 The Eagle (https://cadsoft.io/) circuit design is single sided with a few jumpers.  It is intended to be produced by milling, though you can etch it conventionally as well of course.
 
-The device incorporates a mains USB charger (red in the picture above).  This both acts as the plug so the device can be plugged into a wall socket, and as a 5V supply for the Raspberry Pi Zero and the rest of the electronics.
+The device incorporates a mains USB charger (like this: https://www.amazon.co.uk/Quality-Charger-Blackberry-Love-Accessories/dp/B01M2XE8V9/ ; red in the picture above).  This both acts as the plug so the device can be plugged into a wall socket, and as a 5V supply for the Raspberry Pi Zero and the rest of the electronics.
 
-You will have to hack the charger attaching wires to the three mains connections inside and drilling holes to lead them out of.  The neutral and earth run straight through the device to the mains output, and the live wire goes through the fuse and then the opto-isolated phototriac, which switches it on and off. 
+You will have to hack the charger by attaching wires to the three mains connections inside and drilling holes to run them out of.  The neutral and earth run straight through the device to the mains output, and the live wire goes through the fuse and then the opto-isolated phototriac, which switches it on and off.   
 
 ## Mechanics
 
@@ -72,6 +72,12 @@ This is an extended fork of Todd Medema's repository here:
 https://github.com/toddmedema/echo
 
 Many thanks to him.
+
+It uses the Raspberry Pi Zero Eagle Library from here:
+
+https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=127228
+
+So thanks to them too.
 
 ## Licence
 
