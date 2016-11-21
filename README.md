@@ -40,7 +40,7 @@ The line in the Python lights.py program that sets the Alexa name of the device 
 
      TRIGGERS = {"lights": 52000}
 
-Change the "lights" to any name you like, but it's best to choose easily-pronouncable dictionary words or well-known propper nouns.  That way the Alexa speech recognition will be most reliable.
+Change the "lights" to any name you like, but it's best to choose easily-pronounceable dictionary words or well-known proper nouns.  That way the Alexa speech recognition will be most reliable.
 
 This is intended to connect to your home network using WiFi, but (particularly with BT HomeHubs) getting your Echo/Echo-Dot to find the device can be tricky.  
 
@@ -50,9 +50,9 @@ Then use a micro-USB-to-ether adapter to connect the Pi Zero by wire to your hub
 
 Run the Python program and tell Alexa to discover your devices.  She should find it.  Test that it works by turning the load on and off.
 
-Then shut everything down and disconnect it.  Fit a micro-USB-WiFi adapter in place of the ethernet and power everything up again.  You should be able to ssh into the Pi as before.
+Then shut everything down and disconnect it.  Fit a micro-USB-WiFi adapter in place of the Ethernet and power everything up again.  You should be able to ssh into the Pi as before.
 
-Ask Alexa to turn your device on.  If she sees it, great.  But if not, press and hold the Echo/Echo-dot button to put it into setup mode and leave it for a minute or so, then press and hold it again to turn setup off.  It should reconnect to your hub and then be able to turn your device on and off.
+Ask Alexa to turn your device on.  If she sees it, great.  But if not, press and hold the Echo/Echo-dot button to put it into set-up mode and leave it for a minute or so, then press and hold it again to turn set-up off.  It should reconnect to your hub and then be able to turn your device on and off.
 
 
 ## Useful Links
