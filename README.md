@@ -51,8 +51,11 @@ https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/setting
 Next get and run the EchoPi software:
 
 $ git clone https://github.com/RepRapLtd/EchoPi.git
+
 $ cd EchoPi/Software
+
 $ pip install -r requirements.txt
+
 $ nohup python lights.py > /dev/null &
 
 Tell Alexa, "Alexa, discover my devices."
