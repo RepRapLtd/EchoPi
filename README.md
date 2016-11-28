@@ -26,15 +26,38 @@ You will have to hack the charger by attaching wires to the three mains connecti
 
 The FreeCAD (http://www.freecadweb.org/) case is designed to be 3D printed.  
 
-## Software Quick Start
+## Software
 
-1. Create a [Python Virtual Environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/),
-2. git clone *this_repo*
-3. cd *this_repo*/Software
-4. pip install -r requirements.txt
-4. nohup python lights.py > /dev/null &
-6. Tell Alexa, "Alexa, discover my devices."
-7. Say, "Alexa, turn off lights," and, "Alexa lights on," to switch the mains socket off and on.
+See here to create a linux image on an SD card for the Pi Zero:
+
+https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
+
+Boot up the Pi Zero.  Change it's name to something you want:
+
+http://www.howtogeek.com/167195/how-to-change-your-raspberry-pi-or-other-linux-devices-hostname/
+
+Set your timezone:
+
+http://www.geeklee.co.uk/update-time-zone-on-raspberry-pi-with-raspbian/
+
+Set your Pi to have a static IP address, giving it the same one for ethernet and WiFi (you're not going to use both at once):
+
+https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update
+
+Setup your WiFi network and password:
+
+https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/setting-up-wifi-with-occidentalis
+
+Next get and run the EchoPi software:
+
+$ git clone https://github.com/RepRapLtd/EchoPi.git
+$ cd EchoPi/Software
+$ pip install -r requirements.txt
+$ nohup python lights.py > /dev/null &
+
+Tell Alexa, "Alexa, discover my devices."
+
+Say, "Alexa, turn off lights," and, "Alexa lights on," to switch the mains socket off and on.
 
 The line in the Python lights.py program that sets the Alexa name of the device is this one:
 
@@ -46,13 +69,27 @@ This is intended to connect to your home network using WiFi, but (particularly w
 
 Start by turning off all the annoying "features" of the BT hub: disable Smart Setup; don't synchronise 5 GHz WiFi with 2.4 GHz (keep the passwords the same, though, or you'll never remember, and ignore the password warning it gives you when you do this); turn off Extended UPnP security.
 
-Then use a micro-USB-to-ether adapter to connect the Pi Zero by wire to your hub.  Find the IP address that the hub has allocated your device (hub advanced settings; DHCP table).  Log into the Pi using ssh and set it to use that IP address for both wired and WiFi connections (https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update).
+Then use a micro-USB-to-ether adapter to connect the Pi Zero by wire to your hub.  
 
-Run the Python program and tell Alexa to discover your devices.  She should find it.  Test that it works by turning the load on and off.
+Run the Python program and tell Alexa to discover your devices.  She should find "lights" (or whatever you have called it).  Test that it works by turning the load on and off.
 
 Then shut everything down and disconnect it.  Fit a micro-USB-WiFi adapter in place of the Ethernet and power everything up again.  You should be able to ssh into the Pi as before.
 
 Ask Alexa to turn your device on.  If she sees it, great.  But if not, press and hold the Echo/Echo-dot button to put it into set-up mode and leave it for a minute or so, then press and hold it again to turn set-up off.  It should reconnect to your hub and then be able to turn your device on and off.
+
+The "nohup python lights.py > /dev/null &" command will run the Python program in the background and it will stay running until you re-boot the Pi.  If you want to see what it is doing, just run "python lights.py" instead.  But this will die when you log out.
+
+If the program is running in the background and you want to kill it and start again, type:
+
+$ ps -ael | grep pyth
+
+This will give something like:
+
+  0 S  1000   868   834 41  80   0 -  4062 poll_s pts/0    00:00:02 python
+
+The number of the Python process is the 868.  To stop process 868 type:
+
+$ kill -9 868
 
 
 ## Useful Links
