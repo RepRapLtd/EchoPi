@@ -56,17 +56,17 @@ $ cd EchoPi/Software
 
 $ pip install -r requirements.txt
 
-$ nohup python lights.py > /dev/null &
+$ nohup python echopi.py > /dev/null &
 
 Tell Alexa, "Alexa, discover my devices."
 
-Say, "Alexa, turn off lights," and, "Alexa lights on," to switch the mains socket off and on.
+Say, "Alexa, turn off device," and, "Alexa device on," to switch the mains socket off and on.
 
-The line in the Python lights.py program that sets the Alexa name of the device is this one:
+The line in the Python echopi.py program that sets the Alexa name of the device is this one:
 
-     TRIGGERS = {"lights": 52000}
+     TRIGGERS = {"device": 52000}
 
-Change the "lights" to any name you like, but it's best to choose easily-pronounceable dictionary words or well-known proper nouns.  That way the Alexa speech recognition will be most reliable.
+Change the "device" to any name you like, but it's best to choose easily-pronounceable dictionary words or well-known proper nouns.  That way the Alexa speech recognition will be most reliable.
 
 This is intended to connect to your home network using WiFi, but (particularly with BT HomeHubs) getting your Echo/Echo-Dot to find the device can be tricky.  
 
@@ -74,13 +74,13 @@ Start by turning off all the annoying "features" of the BT hub: disable Smart Se
 
 Then use a micro-USB-to-ether adapter to connect the Pi Zero by wire to your hub.  
 
-Run the Python program and tell Alexa to discover your devices.  She should find "lights" (or whatever you have called it).  Test that it works by turning the load on and off.
+Run the Python program and tell Alexa to discover your devices.  She should find "device" (or whatever you have called it).  Test that it works by turning the load on and off.
 
 Then shut everything down and disconnect it.  Fit a micro-USB-WiFi adapter in place of the Ethernet and power everything up again.  You should be able to ssh into the Pi as before.
 
 Ask Alexa to turn your device on.  If she sees it, great.  But if not, press and hold the Echo/Echo-dot button to put it into set-up mode and leave it for a minute or so, then press and hold it again to turn set-up off.  It should reconnect to your hub and then be able to turn your device on and off.
 
-The "nohup python lights.py > /dev/null &" command will run the Python program in the background and it will stay running until you re-boot the Pi.  If you want to see what it is doing, just run "python lights.py" instead.  But this will die when you log out.
+The "nohup python echopi.py > /dev/null &" command will run the Python program in the background and it will stay running until you re-boot the Pi.  If you want to see what it is doing, just run "python echopi.py" instead.  But this will die when you log out.
 
 If the program is running in the background and you want to kill it and start again, type:
 

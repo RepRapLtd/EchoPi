@@ -26,7 +26,7 @@ class device_handler(debounce_handler):
     """Publishes the on/off state requested,
        and the IP address of the Echo making the request.
     """
-    TRIGGERS = {"lights": 52000}
+    TRIGGERS = {"device": 52000}
 
     def act(self, client_address, state):
         if state:
